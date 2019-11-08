@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+spec:
+  selector:
+    matchLabels:
+      app: api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: richardchesterwood/k8s-fleetman-api-gateway:release1
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
